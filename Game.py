@@ -28,8 +28,8 @@ class Game:
 
 if __name__ == "__main__":
     board = Board(3)
-    player1 = AIPlayer('x', 'Dominika', 9, True)
-    player2 = AIPlayer('o', 'Wojtek', 1, True)
+    player1 = AIPlayer('x', 'Dominika', 1)
+    player2 = AIPlayer('o', 'Wojtek', 1)
     game = Game(board, player1, player2)
     game.play()
     game.print_game_result()

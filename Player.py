@@ -26,15 +26,14 @@ class Player:
 
 
 class AIPlayer:
-    def __init__(self, symbol, name, depth, max):
+    def __init__(self, symbol, name, depth):
         self.symbol = symbol
         self.name = name
         self.depth = depth
-        self.max = max
 
     def move(self, board):
-        val, move, depth = self.minimax(board, self.depth, self.max)
-        print(f"Chosen: {val} {move} depth: {depth}")
+        val, move, _ = self.minimax(board, self.depth, True)
+        print(f"Chosen: {val} {move}")
         board.board[move[0]][move[1]] = self.symbol
 
     def evaluate(self, board):
