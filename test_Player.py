@@ -5,7 +5,7 @@ from Board import Board
 
 class TestAIPlayer(unittest.TestCase):
     def setUp(self):
-        self.player = AIPlayer('x', 'AI', 9, True)
+        self.player = AIPlayer('x', 'AI', 9)
 
     def test_move(self):
         # Create a board with some initial state
@@ -29,7 +29,7 @@ class TestAIPlayer(unittest.TestCase):
                        ['o', 'o', ' ']]
 
         # Call the minimax method
-        value, move, _ = self.player.minimax(board, 3, True)
+        value, move, _ = self.player.minimax(board, 3)
 
         # Check if the returned value and move are correct
 
