@@ -37,10 +37,7 @@ class AIPlayer:
         board.board[move[0]][move[1]] = self.symbol
 
     def evaluate(self, board):
-        price_board = [[3, 2, 3],
-                       [2, 4, 2],
-                       [3, 2, 3]]
-
+        price_board = board.generate_price_board()
         oponent_sum = 0
         player_sum = 0
         oponent_symbol = 'x' if self.symbol == 'o' else 'o'

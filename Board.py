@@ -48,6 +48,18 @@ class Board:
       
     def get_available_moves(self):
         return [(row, col) for row in range(len(self.board)) for col in range(len(self.board[0])) if self.board[row][col] == ' ']
+    
+    def generate_price_board(self):
+        price_board = [[0 for _ in range(self.board_size)] for _ in range(self.board_size)]
+        for i in range(self.board_size):
+            for j in range(self.board_size):
+                if i == j or i + j == self.board_size - 1:
+                    price_board[i][j] = 3
+                else:
+                    price_board[i][j] = 2
+        if self.board_size % 2 != 0:
+            price_board[self.board_size//2][self.board_size//2] = 4
+        return price_board
  
 
         
