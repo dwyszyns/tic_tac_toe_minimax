@@ -1,4 +1,5 @@
 from cmath import inf
+from Board import Board
 import random
 
 warunki = {
@@ -9,22 +10,22 @@ warunki = {
 }
 
 class AIPlayer:
-    def __init__(self, symbol, name, depth):
+    def __init__(self, symbol:str, name:str, depth:int):
         self.symbol = symbol
         self.name = name
-        self.depth = depth
+        self.depth = depth 
 
-    def move(self, board):
-        val, move, _ = self.minimax(board, self.depth, True)
-        print(f"Chosen: {val} {move}")
+    def move(self, board:Board):
+        value, move, _ = self.minimax(board, self.depth, True)
+        print(f"Chosen: {value} {move}")
         board.board[move[0]][move[1]] = self.symbol
 
-    def evaluate(self, board):
+    def evaluate(self, board:Board) -> int:
         price_board = board.generate_price_board()
         price = 0
         oponent_symbol = "x" if self.symbol == "o" else "o"
-        for i in range(len(board.board)):
-            for j in range(len(board.board[0])):
+        for i in range(board.board_size):
+            for j in range(board.board_size):
                 if board.board[i][j] == self.symbol:
                     price += price_board[i][j]
 
@@ -39,7 +40,7 @@ class AIPlayer:
 
         return price
 
-    def minimax(self, board, depth, maximizing_player=True):
+    def minimax(self, board:Board, depth:int, maximizing_player:bool =True):
         if depth == 0 or board.game_over() or board.check_winner() is not None:
             return self.evaluate(board), None, depth
 

@@ -1,6 +1,3 @@
-from typing import Optional
-
-
 class Board:
     def __init__(self, board_size):
         self.board_size = board_size
@@ -71,18 +68,18 @@ class Board:
             s += "\n" + (4 * self.board_size + 1) * "-" + "\n"
         return s
 
-    def game_over(self):
+    def game_over(self) -> bool:
         return " " not in [elem for row in self.board for elem in row]
 
-    def get_available_moves(self):
+    def get_available_moves(self) -> list:
         return [
             (row, col)
-            for row in range(len(self.board))
-            for col in range(len(self.board[0]))
+            for row in range(self.board_size)
+            for col in range(self.board_size)
             if self.board[row][col] == " "
         ]
 
-    def generate_price_board(self):
+    def generate_price_board(self) -> list:
         price_board = [
             [0 for _ in range(self.board_size)] for _ in range(self.board_size)
         ]
